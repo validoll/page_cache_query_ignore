@@ -1,0 +1,5 @@
+name: 'Page Cache Ignore query parameters'
+type: module
+description: 'Alter page cache middleware class to ignore query params.'
+core: 8.x
+package: Other
