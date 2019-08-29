@@ -63,11 +63,11 @@ class PageCacheQueryIgnoreConfigForm extends ConfigFormBase {
     $ignore_conf = $this->configFactory->get('page_cache_query_ignore.settings');
 
     $form['ignored_parameters'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Ignore'),
+      '#type' => 'textarea',
+      '#title' => $this->t('Ignored query parameters'),
       '#required' => TRUE,
-      '#default_value' => implode(",", $ignore_conf->get('ignored_parameters')),
-      '#description' => $this->t("Comma separated query parameters to ignore"),
+      '#default_value' => implode("\n", $ignore_conf->get('ignored_parameters')),
+      '#description' => $this->t('List of query parameters to ignore (one parameter per line).'),
       ];
 
     $form['submit'] = [
@@ -88,9 +88,8 @@ class PageCacheQueryIgnoreConfigForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->configFactory->getEditable('page_cache_query_ignore.settings');
-
-    $config->set('ignored_parameters', explode(",", $form_state->getValue('ignored_parameters')));
-
+    $parameters = array_map('trim', explode("\n", $form_state->getValue('ignored_parameters')));
+    $config->set('ignored_parameters', array_filter($parameters));
     $config->save();
 
     parent::submitForm($form, $form_state);
