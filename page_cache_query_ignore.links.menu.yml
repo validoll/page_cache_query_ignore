@@ -1,0 +1,5 @@
+page_cache_query_ignore.admin:
+  title: 'Page Cache Query Ignore'
+  description: 'Configuration for Page Cache Query Ignore plugin.'
+  route_name: page_cache_query_ignore.admin
+  parent: system.performance_settings

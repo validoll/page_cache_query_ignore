@@ -1,0 +1,4 @@
+page_cache_query_ignore.admin:
+  title: 'Page Cache Query Ignore'
+  base_route: system.performance_settings
+  route_name: page_cache_query_ignore.admin

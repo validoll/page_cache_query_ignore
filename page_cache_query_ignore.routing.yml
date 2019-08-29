@@ -1,0 +1,7 @@
+page_cache_query_ignore.admin:
+  path: 'admin/config/development/performance/page_cache_query_ignore'
+  defaults:
+    _form: '\Drupal\page_cache_query_ignore\Form\PageCacheQueryIgnoreConfigForm'
+    _title: 'Page cache query ignore'
+  requirements:
+    _permission: 'administer site configuration'
